@@ -1,1 +1,50 @@
-{}
+{
+    "categories": [
+        {
+            "id": "1s3c",
+            "name": "Podstawowe",
+            "identier": "basic",
+            "position": 1
+        },
+        {
+            "id": "2s4c",
+            "name": "Dodatkowe",
+            "identier": "extra",
+            "position": 2
+        }
+    ],
+    "parts": [
+        {
+            "id": "1r9b",
+            "name": "Otwierany dach",
+            "price": 10000,
+            "partId": "opening-roof",
+            "categoryId": "2s4c"
+        },
+        {
+            "id": "1r9y",
+            "name": "Stalowe koła",
+            "price": 1000,
+            "partId": "steel-wheels",
+            "categoryId": "1s3c"
+        }
+    ],
+    "orders": [
+        {
+            "id": "2v4r",
+            "firstName": "Janusz",
+            "lastName": "Biedak",
+            "email": "janusz.biedak@example.com",
+            "value": 1000,
+            "details": "podłoga, stalowe koła, kierunkowskazy"
+        },
+        {
+            "id": "2v4r",
+            "firstName": "Marian",
+            "lastName": "Bogacz",
+            "email": "marian.bogacz@example.com",
+            "value": 100000,
+            "details": "subwoofer, aluminiowe koła, podświetlenie LED"
+        }
+    ]
+}
