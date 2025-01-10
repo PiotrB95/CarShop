@@ -1,3 +1,3 @@
 module.exports = {
-    'src/*.{ts,tsx}': ['npm run prettify', () => 'tsc --noEmit -p tsconfig.json', 'npm run lint --fix --no-cache'],
+    '*.{ts,tsx}': ['npm run prettify', () => 'tsc --noEmit -p tsconfig.json', 'npm run lint --fix --no-cache'],
   }
