@@ -20,7 +20,6 @@ const CategoriesView = () => {
               to="/categories/$categoryId"
               params={{ categoryId: category.id }}
             >
-              {' '}
               {category.name}
             </Link>
           </li>
