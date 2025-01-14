@@ -11,12 +11,19 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as OrdersImport } from './routes/orders'
 import { Route as CreatorImport } from './routes/creator'
 import { Route as IndexImport } from './routes/index'
 import { Route as CategoriesIndexImport } from './routes/categories/index'
 import { Route as CategoriesCategoryIdImport } from './routes/categories/$categoryId'
 
 // Create/Update Routes
+
+const OrdersRoute = OrdersImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const CreatorRoute = CreatorImport.update({
   id: '/creator',
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreatorImport
       parentRoute: typeof rootRoute
     }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersImport
+      parentRoute: typeof rootRoute
+    }
     '/categories/$categoryId': {
       id: '/categories/$categoryId'
       path: '/categories/$categoryId'
@@ -82,6 +96,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/creator': typeof CreatorRoute
+  '/orders': typeof OrdersRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
   '/categories': typeof CategoriesIndexRoute
 }
@@ -89,6 +104,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/creator': typeof CreatorRoute
+  '/orders': typeof OrdersRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
   '/categories': typeof CategoriesIndexRoute
 }
@@ -97,22 +113,35 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/creator': typeof CreatorRoute
+  '/orders': typeof OrdersRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
   '/categories/': typeof CategoriesIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/creator' | '/categories/$categoryId' | '/categories'
+  fullPaths:
+    | '/'
+    | '/creator'
+    | '/orders'
+    | '/categories/$categoryId'
+    | '/categories'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/creator' | '/categories/$categoryId' | '/categories'
-  id: '__root__' | '/' | '/creator' | '/categories/$categoryId' | '/categories/'
+  to: '/' | '/creator' | '/orders' | '/categories/$categoryId' | '/categories'
+  id:
+    | '__root__'
+    | '/'
+    | '/creator'
+    | '/orders'
+    | '/categories/$categoryId'
+    | '/categories/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CreatorRoute: typeof CreatorRoute
+  OrdersRoute: typeof OrdersRoute
   CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
   CategoriesIndexRoute: typeof CategoriesIndexRoute
 }
@@ -120,6 +149,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CreatorRoute: CreatorRoute,
+  OrdersRoute: OrdersRoute,
   CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,
   CategoriesIndexRoute: CategoriesIndexRoute,
 }
@@ -136,6 +166,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/creator",
+        "/orders",
         "/categories/$categoryId",
         "/categories/"
       ]
@@ -145,6 +176,9 @@ export const routeTree = rootRoute
     },
     "/creator": {
       "filePath": "creator.tsx"
+    },
+    "/orders": {
+      "filePath": "orders.tsx"
     },
     "/categories/$categoryId": {
       "filePath": "categories/$categoryId.tsx"
