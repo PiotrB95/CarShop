@@ -27,6 +27,13 @@
             "price": 1000,
             "partId": "steel-wheels",
             "categoryId": "1s3c"
+        },
+        {
+            "id": "1r9v",
+            "name": "Aluminiowe koła",
+            "price": 1500,
+            "partId": "alu-wheels",
+            "categoryId": "1s3c"
         }
     ],
     "orders": [
