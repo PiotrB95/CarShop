@@ -1,44 +1,45 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useCarShopStore } from '../../store/useCarShopStore'
-import { Button } from '@mui/material'
+import { useCreateOrderMutation } from '../../queries/orders/useCreateOrderMutation'
+import { OrderForm } from '../../components/form/orderForm'
+import { Summary } from '../../components/form/summary'
+import { BasicWrapper } from '../../components/basicWrapper'
+
+export type FormData = {
+  firstname: string
+  lastname: string
+  email: string
+}
 
 const FormView = () => {
   const { parts, totalValue, clearParts } = useCarShopStore()
+  const { mutate, isPending } = useCreateOrderMutation()
+
   const navigate = useNavigate()
 
-  const submitHandler = () => {
+  const orderDetails = () => {
+    return parts.map((part) => part.name.toLowerCase()).join(', ')
+  }
+
+  const onSubmit = (data: FormData) => {
+    mutate({
+      firstName: data.firstname,
+      lastName: data.lastname,
+      email: data.email,
+      details: orderDetails(),
+      value: totalValue,
+    })
     clearParts()
     navigate({ to: '/creator/congratulations' })
   }
 
   return (
-    <div>
-      <h3>Formularz końcowy</h3>
-      <div>
-        <p>Podsumowanie:</p>
-        <p>Lista części:</p>
-        <ul>
-          {parts.map((part) => (
-            <li key={part.id}>
-              {part.name} - {part.price} zł
-            </li>
-          ))}
-        </ul>
-        <p>Suma: {totalValue}</p>
-      </div>
-      {/* TODO */}
-      <input type="name" placeholder="Podaj imię" />
-      <input type="surname" placeholder="Podaj nazwisko" />
-      <input type="email" placeholder="Podaj email" />
-      {/* TODO ^ */}
-      <Button
-        sx={{ width: '30%', margin: '15px' }}
-        variant="contained"
-        onClick={submitHandler}
-      >
-        Wyślij formularz
-      </Button>
-    </div>
+    <BasicWrapper>
+      <OrderForm onSubmit={onSubmit} />
+      <h3>Podsumowanie</h3>
+      <Summary parts={parts} totalValue={totalValue} />
+      {isPending ? <p>Dane są wysyłane...</p> : null}
+    </BasicWrapper>
   )
 }
 
