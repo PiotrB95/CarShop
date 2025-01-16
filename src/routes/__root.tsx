@@ -1,70 +1,38 @@
-import { Box, Typography } from '@mui/material'
-import Button from '@mui/material/Button'
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
 import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled'
 import SubjectIcon from '@mui/icons-material/Subject'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
+import {
+  StyledNavbarButtonContainer,
+  StyledNavbarLogoTypography,
+  StyledNavbarMainContainer,
+} from '../components/navbar/navbar.styled'
+import { LinkButton } from '../components/navbar/linkButton'
 
 const RootView = () => {
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          wifth: '100%',
-          padding: '20px',
-          backgroundColor: 'lightblue',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="h2" sx={{ display: 'flex', alignItems: 'center' }}>
+      <StyledNavbarMainContainer>
+        <StyledNavbarLogoTypography variant="h2">
           <DirectionsCarFilledIcon sx={{ fontSize: 'inherit' }} />
           Car Shop
-        </Typography>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-            width: '100%',
-          }}
-        >
-          <Button
-            sx={{ width: '30%', margin: '15px' }}
-            component={Link}
-            to="/categories"
-            variant="contained"
-            color="primary"
-          >
+        </StyledNavbarLogoTypography>
+        <StyledNavbarButtonContainer>
+          <LinkButton toRoute="/categories">
             <SubjectIcon />
             Kategorie
-          </Button>
-          <Button
-            sx={{ width: '30%', margin: '15px' }}
-            component={Link}
-            to="/creator"
-            variant="contained"
-            color="primary"
-          >
+          </LinkButton>
+          <LinkButton toRoute="/creator">
             <PsychologyIcon />
             Kreator
-          </Button>
-          <Button
-            sx={{ width: '30%', margin: '15px' }}
-            component={Link}
-            to="/orders"
-            variant="contained"
-            color="primary"
-          >
+          </LinkButton>
+          <LinkButton toRoute="/orders">
             <ShoppingCartCheckoutIcon />
             Zamówienia
-          </Button>
-        </Box>
-      </Box>
+          </LinkButton>
+        </StyledNavbarButtonContainer>
+      </StyledNavbarMainContainer>
       <Outlet />
     </>
   )

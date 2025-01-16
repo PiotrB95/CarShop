@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useGetCategoriesQuery } from '../../queries/categories/useGetCategoriesQuery'
 import { Button } from '@mui/material'
+import { BasicWrapper } from '../../components/basicWrapper'
 
 const CreatorView = () => {
   const { data, isFetching } = useGetCategoriesQuery()
@@ -14,7 +15,7 @@ const CreatorView = () => {
   })[0].id
 
   return (
-    <>
+    <BasicWrapper>
       <h2>
         Witaj w kreatorze, który przeprowadzi Cię przez proces wyboru części ze
         wszystkich kategorii
@@ -27,7 +28,7 @@ const CreatorView = () => {
       >
         Rozpocznij proces!
       </Button>
-    </>
+    </BasicWrapper>
   )
 }
 

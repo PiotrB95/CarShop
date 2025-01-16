@@ -17,6 +17,7 @@ const OrdersView = () => {
           <li key={order.id}>
             <p>{order.firstName}</p>
             <p>{order.lastName}</p>
+            <p>{order.email}</p>
             <p>{order.details}</p>
             <p>{order.value}</p>
           </li>

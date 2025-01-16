@@ -16,6 +16,7 @@ import { useGetPartsForCategoryQuery } from '../../queries/parts/useGetPartsForC
 import { useGetCategoriesQuery } from '../../queries/categories/useGetCategoriesQuery'
 import { PartEntity } from 'src/types/part'
 import { useCarShopStore } from '../../store/useCarShopStore'
+import { BasicWrapper } from '../../components/basicWrapper'
 
 const CreatorCategoryView = () => {
   const { parts, totalValue, addPart, removePart } = useCarShopStore()
@@ -59,7 +60,7 @@ const CreatorCategoryView = () => {
   }
 
   return (
-    <div>
+    <BasicWrapper>
       <h3>
         Wybierz <u>minimum jedną</u> część dla kategorii: {categoryData.name}
       </h3>
@@ -97,7 +98,7 @@ const CreatorCategoryView = () => {
       >
         Dalej
       </Button>
-    </div>
+    </BasicWrapper>
   )
 }
 
