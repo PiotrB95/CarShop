@@ -6,6 +6,7 @@ import { PartTable } from '../../components/Parts/PartTable.tsx'
 import { Box, Button, Container, Typography } from '@mui/material'
 import { CustomBox } from '../../components/custom/CustomBox.tsx'
 import { Delete } from '@mui/icons-material'
+import { AddPartForm } from '../../components/Parts/AddPartForm.tsx'
 
 const CategoryView = () => {
   const navigate = useNavigate()
@@ -42,6 +43,7 @@ const CategoryView = () => {
             <Button variant="contained" color="error" onClick={onClickHandler}><Delete/></Button>
           </div>
       </Box>
+        <AddPartForm />
       <PartTable data={partsData} isFetching={partsFetching} />
     </CustomBox>
     </Container>

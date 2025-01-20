@@ -2,8 +2,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useGetCategoriesQuery } from '../../queries/categories/useGetCategoriesQuery'
 import { CategoryTable } from '../../components/Category/CategoryTable.tsx'
 import { Container} from '@mui/material'
-import { CategoryForm } from '../../components/Category/CategoryForm.tsx'
 import { CustomBox } from '../../components/custom/CustomBox.tsx'
+import { AddCategoryForm } from '../../components/Category/AddCategoryForm.tsx'
 
 
 const CategoriesView = () => {
@@ -15,7 +15,7 @@ const CategoriesView = () => {
     <>
       <Container>
         <CustomBox>
-          <CategoryForm/>
+          <AddCategoryForm />
           <CategoryTable data={categories} isFetching={isFetching}/>
         </CustomBox>
       </Container>
