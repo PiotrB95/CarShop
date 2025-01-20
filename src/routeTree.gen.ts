@@ -12,9 +12,12 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as OrdersImport } from './routes/orders'
-import { Route as CreatorImport } from './routes/creator'
 import { Route as IndexImport } from './routes/index'
+import { Route as CreatorIndexImport } from './routes/creator/index'
 import { Route as CategoriesIndexImport } from './routes/categories/index'
+import { Route as CreatorFormImport } from './routes/creator/form'
+import { Route as CreatorCongratulationsImport } from './routes/creator/congratulations'
+import { Route as CreatorCategoryIdImport } from './routes/creator/$categoryId'
 import { Route as CategoriesCategoryIdImport } from './routes/categories/$categoryId'
 
 // Create/Update Routes
@@ -25,21 +28,39 @@ const OrdersRoute = OrdersImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const CreatorRoute = CreatorImport.update({
-  id: '/creator',
-  path: '/creator',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
+const CreatorIndexRoute = CreatorIndexImport.update({
+  id: '/creator/',
+  path: '/creator/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const CategoriesIndexRoute = CategoriesIndexImport.update({
   id: '/categories/',
   path: '/categories/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CreatorFormRoute = CreatorFormImport.update({
+  id: '/creator/form',
+  path: '/creator/form',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CreatorCongratulationsRoute = CreatorCongratulationsImport.update({
+  id: '/creator/congratulations',
+  path: '/creator/congratulations',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CreatorCategoryIdRoute = CreatorCategoryIdImport.update({
+  id: '/creator/$categoryId',
+  path: '/creator/$categoryId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,13 +81,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/creator': {
-      id: '/creator'
-      path: '/creator'
-      fullPath: '/creator'
-      preLoaderRoute: typeof CreatorImport
-      parentRoute: typeof rootRoute
-    }
     '/orders': {
       id: '/orders'
       path: '/orders'
@@ -81,11 +95,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoriesCategoryIdImport
       parentRoute: typeof rootRoute
     }
+    '/creator/$categoryId': {
+      id: '/creator/$categoryId'
+      path: '/creator/$categoryId'
+      fullPath: '/creator/$categoryId'
+      preLoaderRoute: typeof CreatorCategoryIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/creator/congratulations': {
+      id: '/creator/congratulations'
+      path: '/creator/congratulations'
+      fullPath: '/creator/congratulations'
+      preLoaderRoute: typeof CreatorCongratulationsImport
+      parentRoute: typeof rootRoute
+    }
+    '/creator/form': {
+      id: '/creator/form'
+      path: '/creator/form'
+      fullPath: '/creator/form'
+      preLoaderRoute: typeof CreatorFormImport
+      parentRoute: typeof rootRoute
+    }
     '/categories/': {
       id: '/categories/'
       path: '/categories'
       fullPath: '/categories'
       preLoaderRoute: typeof CategoriesIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/creator/': {
+      id: '/creator/'
+      path: '/creator'
+      fullPath: '/creator'
+      preLoaderRoute: typeof CreatorIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -95,63 +137,92 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/creator': typeof CreatorRoute
   '/orders': typeof OrdersRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
+  '/creator/$categoryId': typeof CreatorCategoryIdRoute
+  '/creator/congratulations': typeof CreatorCongratulationsRoute
+  '/creator/form': typeof CreatorFormRoute
   '/categories': typeof CategoriesIndexRoute
+  '/creator': typeof CreatorIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/creator': typeof CreatorRoute
   '/orders': typeof OrdersRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
+  '/creator/$categoryId': typeof CreatorCategoryIdRoute
+  '/creator/congratulations': typeof CreatorCongratulationsRoute
+  '/creator/form': typeof CreatorFormRoute
   '/categories': typeof CategoriesIndexRoute
+  '/creator': typeof CreatorIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/creator': typeof CreatorRoute
   '/orders': typeof OrdersRoute
   '/categories/$categoryId': typeof CategoriesCategoryIdRoute
+  '/creator/$categoryId': typeof CreatorCategoryIdRoute
+  '/creator/congratulations': typeof CreatorCongratulationsRoute
+  '/creator/form': typeof CreatorFormRoute
   '/categories/': typeof CategoriesIndexRoute
+  '/creator/': typeof CreatorIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/creator'
     | '/orders'
     | '/categories/$categoryId'
+    | '/creator/$categoryId'
+    | '/creator/congratulations'
+    | '/creator/form'
     | '/categories'
+    | '/creator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/creator' | '/orders' | '/categories/$categoryId' | '/categories'
+  to:
+    | '/'
+    | '/orders'
+    | '/categories/$categoryId'
+    | '/creator/$categoryId'
+    | '/creator/congratulations'
+    | '/creator/form'
+    | '/categories'
+    | '/creator'
   id:
     | '__root__'
     | '/'
-    | '/creator'
     | '/orders'
     | '/categories/$categoryId'
+    | '/creator/$categoryId'
+    | '/creator/congratulations'
+    | '/creator/form'
     | '/categories/'
+    | '/creator/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CreatorRoute: typeof CreatorRoute
   OrdersRoute: typeof OrdersRoute
   CategoriesCategoryIdRoute: typeof CategoriesCategoryIdRoute
+  CreatorCategoryIdRoute: typeof CreatorCategoryIdRoute
+  CreatorCongratulationsRoute: typeof CreatorCongratulationsRoute
+  CreatorFormRoute: typeof CreatorFormRoute
   CategoriesIndexRoute: typeof CategoriesIndexRoute
+  CreatorIndexRoute: typeof CreatorIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CreatorRoute: CreatorRoute,
   OrdersRoute: OrdersRoute,
   CategoriesCategoryIdRoute: CategoriesCategoryIdRoute,
+  CreatorCategoryIdRoute: CreatorCategoryIdRoute,
+  CreatorCongratulationsRoute: CreatorCongratulationsRoute,
+  CreatorFormRoute: CreatorFormRoute,
   CategoriesIndexRoute: CategoriesIndexRoute,
+  CreatorIndexRoute: CreatorIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -165,17 +236,17 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/creator",
         "/orders",
         "/categories/$categoryId",
-        "/categories/"
+        "/creator/$categoryId",
+        "/creator/congratulations",
+        "/creator/form",
+        "/categories/",
+        "/creator/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
-    },
-    "/creator": {
-      "filePath": "creator.tsx"
     },
     "/orders": {
       "filePath": "orders.tsx"
@@ -183,8 +254,20 @@ export const routeTree = rootRoute
     "/categories/$categoryId": {
       "filePath": "categories/$categoryId.tsx"
     },
+    "/creator/$categoryId": {
+      "filePath": "creator/$categoryId.tsx"
+    },
+    "/creator/congratulations": {
+      "filePath": "creator/congratulations.tsx"
+    },
+    "/creator/form": {
+      "filePath": "creator/form.tsx"
+    },
     "/categories/": {
       "filePath": "categories/index.tsx"
+    },
+    "/creator/": {
+      "filePath": "creator/index.tsx"
     }
   }
 }

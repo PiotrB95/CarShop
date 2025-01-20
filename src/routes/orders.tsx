@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CircularProgress } from '@mui/material'
 import { useGetOrdersQuery } from '../queries/orders/useGetOrdersQuery'
+import { BasicWrapper } from '../components/basicWrapper'
+import { OrdersList } from '../components/orders/ordersList'
 
 const OrdersView = () => {
   const { data, isFetching } = useGetOrdersQuery()
@@ -10,20 +12,9 @@ const OrdersView = () => {
   if (!data) return <p>Brak zamówień.</p>
 
   return (
-    <>
-      <ul>
-        Zamówienia:
-        {data.map((order) => (
-          <li key={order.id}>
-            <p>{order.firstName}</p>
-            <p>{order.lastName}</p>
-            <p>{order.details}</p>
-            <p>{order.value}</p>
-          </li>
-        ))}
-      </ul>
-      <hr />
-    </>
+    <BasicWrapper>
+      <OrdersList orders={data} />
+    </BasicWrapper>
   )
 }
 

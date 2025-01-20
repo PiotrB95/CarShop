@@ -1,50 +1,144 @@
 {
-    "categories": [
-        {
-            "id": "1s3c",
-            "name": "Podstawowe",
-            "identier": "basic",
-            "position": 1
-        },
-        {
-            "id": "2s4c",
-            "name": "Dodatkowe",
-            "identier": "extra",
-            "position": 2
-        }
-    ],
-    "parts": [
-        {
-            "id": "1r9b",
-            "name": "Otwierany dach",
-            "price": 10000,
-            "partId": "opening-roof",
-            "categoryId": "2s4c"
-        },
-        {
-            "id": "1r9y",
-            "name": "Stalowe koła",
-            "price": 1000,
-            "partId": "steel-wheels",
-            "categoryId": "1s3c"
-        }
-    ],
-    "orders": [
-        {
-            "id": "2v4r",
-            "firstName": "Janusz",
-            "lastName": "Biedak",
-            "email": "janusz.biedak@example.com",
-            "value": 1000,
-            "details": "podłoga, stalowe koła, kierunkowskazy"
-        },
-        {
-            "id": "2v4p",
-            "firstName": "Marian",
-            "lastName": "Bogacz",
-            "email": "marian.bogacz@example.com",
-            "value": 100000,
-            "details": "subwoofer, aluminiowe koła, podświetlenie LED"
-        }
-    ]
+  "categories": [
+    {
+      "id": "1s3c",
+      "name": "Podstawowe",
+      "identier": "basic",
+      "position": 1
+    },
+    {
+      "id": "2s4c",
+      "name": "Dodatkowe",
+      "identier": "extra",
+      "position": 2
+    }
+  ],
+  "parts": [
+    {
+      "id": "1r9b",
+      "name": "Otwierany dach",
+      "price": 10000,
+      "partId": "opening-roof",
+      "categoryId": "2s4c"
+    },
+    {
+      "id": "1r9y",
+      "name": "Stalowe koła",
+      "price": 1000,
+      "partId": "steel-wheels",
+      "categoryId": "1s3c"
+    },
+    {
+      "id": "1r9v",
+      "name": "Aluminiowe koła",
+      "price": 1500,
+      "partId": "alu-wheels",
+      "categoryId": "1s3c"
+    }
+  ],
+  "orders": [
+    {
+      "id": "2v4r",
+      "firstName": "Janusz",
+      "lastName": "Biedak",
+      "email": "janusz.biedak@example.com",
+      "value": 1000,
+      "details": "podłoga, stalowe koła, kierunkowskazy"
+    },
+    {
+      "id": "2v4p",
+      "firstName": "Marian",
+      "lastName": "Bogacz",
+      "email": "marian.bogacz@example.com",
+      "value": 100000,
+      "details": "subwoofer, aluminiowe koła, podświetlenie LED, skórzana tapicerka, sportowy wydech"
+    },
+    {
+      "id": "02d3",
+      "firstName": "Janusz",
+      "lastName": "Rajdowiec",
+      "email": "janusz@rajd.pl",
+      "details": "stalowe koła",
+      "value": 11000
+    },
+    {
+      "id": "69ba",
+      "firstName": "Janusz",
+      "lastName": "dsd",
+      "email": "test@o2.pl",
+      "details": "stalowe koła, otwierany dach",
+      "value": 11000
+    },
+    {
+      "id": "b216",
+      "firstName": "Bogdan",
+      "lastName": "Milioner",
+      "email": "bog.mil@wp.pl",
+      "details": "stalowe koła, aluminiowe koła, otwierany dach",
+      "value": 12500
+    },
+    {
+      "id": "91f4",
+      "firstName": "dsada",
+      "lastName": "asdasda",
+      "email": "adas@o.pl",
+      "details": "stalowe koła, otwierany dach",
+      "value": 11000
+    },
+    {
+      "id": "13a2",
+      "firstName": "Janusz",
+      "lastName": "esd",
+      "email": "test@2.pl",
+      "details": "stalowe koła, otwierany dach",
+      "value": 11000
+    },
+    {
+      "id": "7042",
+      "lastName": "Te",
+      "email": "Nic@o2.pl",
+      "details": "stalowe koła, otwierany dach",
+      "value": 11000
+    },
+    {
+      "id": "fe5c",
+      "firstName": "sdw",
+      "lastName": "sd",
+      "email": "sasuke95.95@o2.pl",
+      "details": "stalowe koła, otwierany dach",
+      "value": 11000
+    },
+    {
+      "id": "3d3f",
+      "firstName": "Janusz",
+      "lastName": "e23",
+      "email": "test@.pl",
+      "details": "",
+      "value": 0
+    },
+    {
+      "id": "4bc7",
+      "firstName": "Kamil",
+      "lastName": "P23",
+      "email": "kamil.programerprogram.pl",
+      "details": "aluminiowe koła, otwierany dach",
+      "value": 11500
+    },
+    {
+      "id": "3a46",
+      "firstName": "Janusz",
+      "lastName": "Rajdowiec",
+      "email": "test@.pl",
+      "details": "stalowe koła, aluminiowe koła, otwierany dach",
+      "value": 12500
+    },
+    {
+      "id": "7220",
+      "firstName": "Janusz",
+      "lastName": "dsd",
+      "email": "test@w.pl",
+      "details": "aluminiowe koła, otwierany dach",
+      "value": 11500
+    }
+  ]
 }
