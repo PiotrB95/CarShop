@@ -25,8 +25,8 @@ export const PartForm = ({onSubmit}:Props) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            margin: '10px',
-            width: '80%',
+            marginBottom: '20px',
+            width: '100%',
           }}
         >
         <StyledTextField type="text" placeholder="Nazwa" {...register('name', { required: true, minLength: 3 })} error={!!errors.name}/>

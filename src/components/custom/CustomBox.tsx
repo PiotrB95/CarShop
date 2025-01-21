@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 const StyledCustomBox = styled(Box)({
   width: "100%",
-  height: "500px",
+  height: "80vh",
   margin: "20px 0",
   padding: "30px 40px 50px",
   border: `1px solid #ccc`,
