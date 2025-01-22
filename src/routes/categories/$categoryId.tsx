@@ -26,7 +26,7 @@ const CategoryView = () => {
       <CustomBox>
         <CategoryHeader title={categoryData.name} subtitle={categoryData.identier}/>
         <AddPartForm />
-      <PartTable data={partsData} isFetching={partsFetching} />
+        <PartTable data={partsData} isFetching={partsFetching} />
     </CustomBox>
     </Container>
   )

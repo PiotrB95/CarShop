@@ -1,9 +1,10 @@
 import { Box, Button, styled, TextField } from '@mui/material'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { PartFormData } from './AddPartForm.tsx'
+import { PartDto } from '../../types/part.ts'
+
 
 interface Props {
-  onSubmit: SubmitHandler<PartFormData>
+  onSubmit: SubmitHandler<PartDto>
 }
 
 const StyledTextField = styled(TextField)({
@@ -15,7 +16,7 @@ export const PartForm = ({onSubmit}:Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<PartFormData>()
+  } = useForm<PartDto>()
 
 
   return (
@@ -31,7 +32,7 @@ export const PartForm = ({onSubmit}:Props) => {
         >
         <StyledTextField type="text" placeholder="Nazwa" {...register('name', { required: true, minLength: 3 })} error={!!errors.name}/>
         <StyledTextField type="number" placeholder='Cena'{...register('price', { required: true, minLength: 0, maxLength: 100000 })} error={!!errors.price}/>
-        <StyledTextField type="text" placeholder="Nazwa" {...register('partId', { required: true, minLength: 3 })} error={!!errors.partId}/>
+        <StyledTextField type="text" placeholder="Nazwa skrócona" {...register('partId', { required: true, minLength: 3 })} error={!!errors.partId}/>
         <Button variant='contained' type='submit'>Add part</Button>
       </Box>
   )

@@ -12,14 +12,12 @@ const CategoriesView = () => {
   if (!categories) return <p>Brak kategorii</p>
 
   return (
-    <>
       <Container>
         <CustomBox>
           <AddCategoryForm />
           <CategoryTable data={categories} isFetching={isFetching}/>
         </CustomBox>
       </Container>
-    </>
   )
 }
 

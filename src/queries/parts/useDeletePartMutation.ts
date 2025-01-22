@@ -12,8 +12,8 @@ export const useDeletePartMutation = () => {
     mutationFn: async (partId: string) => {
       return apiDelete<PartEntity>(`parts/${partId}`)
     },
-    onSuccess: (deletePart) => {
-      queryClient.invalidateQueries({
+    onSuccess: async (deletePart) => {
+      await queryClient.invalidateQueries({
         queryKey: ['parts'],
       })
       return deletePart;

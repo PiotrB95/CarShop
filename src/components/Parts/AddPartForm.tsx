@@ -3,20 +3,14 @@ import { PartForm } from './PartForm.tsx'
 import { useCreatePartMutation } from '../../queries/orders/useCreatePartMutation.ts'
 import { useParams } from '@tanstack/react-router'
 import CircularProgress from '@mui/material/CircularProgress'
-
-export interface PartFormData {
-  name: string,
-  price: number,
-  partId: string
-  categoryId: string
-}
+import { PartDto } from '../../types/part.ts'
 
 export const AddPartForm = () => {
   const params = useParams({ from: '/categories/$categoryId' })
 
   const { mutate, isPending } = useCreatePartMutation();
 
-  const onSubmit = (data: PartFormData) => {
+  const onSubmit = (data: PartDto) => {
 
     mutate({
       name: data.name,

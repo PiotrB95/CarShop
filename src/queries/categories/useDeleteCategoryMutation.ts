@@ -12,8 +12,8 @@ export const useDeleteCategoryMutation = () => {
     mutationFn: async (categoryId: string) => {
       return apiDelete<CategoryEntity>(`categories/${categoryId}`)
     },
-    onSuccess: (deleteCategory) => {
-      queryClient.invalidateQueries({
+    onSuccess: async (deleteCategory) => {
+      await queryClient.invalidateQueries({
         queryKey: ['categories'],
       })
       return deleteCategory;
