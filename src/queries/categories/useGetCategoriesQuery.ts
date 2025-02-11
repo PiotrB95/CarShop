@@ -6,7 +6,7 @@ export const useGetCategoriesQuery = () => {
   const { apiGet } = useApi()
 
   const { data, isFetching } = useQuery<CategoryEntity[]>({
-    queryKey: ['category'],
+    queryKey: ['categories'],
     queryFn: async () => {
       return apiGet<CategoryEntity[]>('categories')
     },

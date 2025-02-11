@@ -1,31 +1,23 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { useGetCategoriesQuery } from '../../queries/categories/useGetCategoriesQuery'
-import CircularProgress from '@mui/material/CircularProgress'
+import { CategoryTable } from '../../components/Category/CategoryTable.tsx'
+import { Container} from '@mui/material'
+import { CustomBox } from '../../components/custom/CustomBox.tsx'
+import { AddCategoryForm } from '../../components/Category/AddCategoryForm.tsx'
+
 
 const CategoriesView = () => {
-  const { data, isFetching } = useGetCategoriesQuery()
+  const { data: categories, isFetching } = useGetCategoriesQuery()
 
-  if (isFetching) return <CircularProgress />
-
-  if (!data) return <p>No data.</p>
+  if (!categories) return <p>Brak kategorii</p>
 
   return (
-    <>
-      <p>Utwórz nową kategorię</p>
-      <ul>
-        Kategorie:
-        {data.map((category) => (
-          <li key={category.id}>
-            <Link
-              to="/categories/$categoryId"
-              params={{ categoryId: category.id }}
-            >
-              {category.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+      <Container>
+        <CustomBox>
+          <AddCategoryForm />
+          <CategoryTable data={categories} isFetching={isFetching}/>
+        </CustomBox>
+      </Container>
   )
 }
 
