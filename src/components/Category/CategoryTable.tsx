@@ -1,7 +1,6 @@
 import {
-  Alert,
   IconButton,
-  Paper, Snackbar,
+  Paper,
   Table, TableBody, TableCell,
   TableContainer,
   TableHead, TableRow
@@ -10,7 +9,7 @@ import { Delete, Visibility } from '@mui/icons-material'
 import CircularProgress from '@mui/material/CircularProgress'
 import { CategoryEntity } from '../../types/category.ts'
 import { Link } from '@tanstack/react-router'
-import { useDeleteCategory } from './hooks/useDeleteCategory.ts'
+import { useDeleteCategoryMutation } from '../../queries/categories/useDeleteCategoryMutation.ts'
 
 interface Props {
   data :CategoryEntity[],
@@ -19,21 +18,14 @@ interface Props {
 
 export const CategoryTable = ({ data, isFetching }: Props) => {
 
-  const {handleDelete, open, setOpen, isPending, alert} = useDeleteCategory()
+  const {mutateAsync, isPending} = useDeleteCategoryMutation()
+
+  const handleDelete = async (id: string) => {
+    await mutateAsync(id)
+  }
 
   return (
     <>
-      <Snackbar
-        open={open}
-        autoHideDuration={5000}
-        message={alert?.msg}
-        onClose={() => setOpen(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert onClose={() => setOpen(!open)} severity={alert?.status} sx={{ width: '100%' }}>
-          {alert?.msg}
-        </Alert>
-      </Snackbar>
       {isFetching ? <CircularProgress /> : (
         <TableContainer component={Paper}>
           <Table aria-label="simple table">

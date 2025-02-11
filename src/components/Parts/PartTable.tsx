@@ -1,7 +1,6 @@
 import {
-  Alert,
   IconButton,
-  Paper, Snackbar,
+  Paper,
   Table, TableBody, TableCell,
   TableContainer,
   TableHead, TableRow
@@ -9,7 +8,7 @@ import {
 import { Delete } from '@mui/icons-material'
 import CircularProgress from '@mui/material/CircularProgress'
 import { PartEntity } from '../../types/part.ts'
-import { useDeletePart } from './hooks/useDeletePart.ts'
+import { useDeletePartMutation } from '../../queries/parts/useDeletePartMutation.ts'
 
 
 interface Props {
@@ -19,22 +18,14 @@ interface Props {
 
 export const PartTable = ({ data, isFetching }: Props) => {
 
-  const { handleDelete, isPending, alert, open, setOpen } = useDeletePart()
-  console.log(`w Part table `,alert, open)
+  const { mutateAsync, isPending } = useDeletePartMutation()
+
+  const handleDelete = async (id: string) => {
+    await mutateAsync(id)
+  }
 
   return (
     <>
-      <Snackbar
-        open={open}
-        autoHideDuration={5000}
-        message={alert?.msg}
-        onClose={() => setOpen(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert onClose={() => setOpen(false)} severity={alert?.status} sx={{ width: '100%' }}>
-          {alert?.msg}
-        </Alert>
-      </Snackbar>
       {isFetching ? <CircularProgress /> : (
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -57,7 +48,7 @@ export const PartTable = ({ data, isFetching }: Props) => {
                     <TableCell align="left">{part.price}</TableCell>
                     <TableCell align="center">
                       <IconButton
-                        onClick={async () => handleDelete(part.id)}
+                        onClick={() => handleDelete(part.id)}
                         disabled={isPending}
                       >
                         <Delete />

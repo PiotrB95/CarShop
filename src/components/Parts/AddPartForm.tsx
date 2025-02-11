@@ -14,8 +14,8 @@ export const AddPartForm = () => {
 
     mutate({
       name: data.name,
-      price: data.price,
-      partId: data.partId,
+      price: Number(data.price),
+      partId: data.partId.trim().toString(),
       categoryId: params.categoryId,
     })
   }

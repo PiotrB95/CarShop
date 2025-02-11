@@ -18,7 +18,7 @@ export const AddCategoryForm = () => {
 
     mutate({
       name: data.name,
-      identier: data.identier,
+      identier: data.identier.trim().toLowerCase(),
       position: data.position,
     })
   }
