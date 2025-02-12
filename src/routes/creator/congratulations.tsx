@@ -1,10 +1,13 @@
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { BasicWrapper } from '../../components/basicWrapper'
 
 const CreatorCongratulations = () => {
   return (
-    <>
-      <div>Zamówienie zostało złożone!</div>
+    <BasicWrapper>
+      <Box sx={{ padding: '30px 0px', fontWeight: 'bold', fontSize: '24px' }}>
+        Zamówienie zostało złożone!
+      </Box>
       <Button
         sx={{ width: '30%', margin: '15px' }}
         variant="contained"
@@ -13,7 +16,7 @@ const CreatorCongratulations = () => {
       >
         Przejdź na stronę główną
       </Button>
-    </>
+    </BasicWrapper>
   )
 }
 

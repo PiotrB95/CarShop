@@ -11,6 +11,12 @@
       "name": "Dodatkowe",
       "identier": "extra",
       "position": 2
+    },
+    {
+      "id": "d9c8",
+      "name": "Extra",
+      "identier": "extra",
+      "position": "3"
     }
   ],
   "parts": [
@@ -34,6 +40,13 @@
       "price": 1500,
       "partId": "alu-wheels",
       "categoryId": "1s3c"
+    },
+    {
+      "id": "13dd",
+      "name": "Przyciemniane szyby",
+      "price": 100,
+      "partId": "darkwindows",
+      "categoryId": "d9c8"
     }
   ],
   "orders": [
@@ -139,6 +152,30 @@
       "email": "test@w.pl",
       "details": "aluminiowe koła, otwierany dach",
       "value": 11500
+    },
+    {
+      "id": "b868",
+      "firstName": "Test",
+      "lastName": "Testowy",
+      "email": "test@test.test",
+      "details": "stalowe koła, otwierany dach, przyciemniane szyby",
+      "value": 11100
+    },
+    {
+      "id": "c7e4",
+      "firstName": "Test",
+      "lastName": "Test",
+      "email": "test@test.pl",
+      "details": "stalowe koła, otwierany dach, przyciemniane szyby",
+      "value": 11100
+    },
+    {
+      "id": "bcb4",
+      "firstName": "Test",
+      "lastName": "Tester",
+      "email": "test@test.pl",
+      "details": "stalowe koła, otwierany dach, przyciemniane szyby",
+      "value": 11100
     }
   ]
 }

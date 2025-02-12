@@ -7,16 +7,15 @@ interface Props {
 }
 
 const StyledTextField = styled(TextField)({
-  margin: "10px",
-});
+  margin: '10px',
+})
 
-export const CategoryForm = ({onSubmit}:Props) => {
+export const CategoryForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CategoryFormData>()
-
 
   return (
     <Box
@@ -29,10 +28,31 @@ export const CategoryForm = ({onSubmit}:Props) => {
         width: '100%',
       }}
     >
-      <StyledTextField type="text" placeholder="Nazwa" {...register('name', { required: true, minLength: 3 })} error={!!errors.name}/>
-      <StyledTextField type="text" placeholder="URL" {...register('identier', { required: true, minLength: 3 })} error={!!errors.identier}/>
-      <StyledTextField type="number" placeholder='Pozycja'{...register('position', { required: true, minLength: 0, maxLength: 100 })} error={!!errors.position}/>
-      <Button variant='contained' type='submit'>Add part</Button>
+      <StyledTextField
+        type="text"
+        placeholder="Nazwa"
+        {...register('name', { required: true, minLength: 3 })}
+        error={!!errors.name}
+      />
+      <StyledTextField
+        type="text"
+        placeholder="URL"
+        {...register('identier', { required: true, minLength: 3 })}
+        error={!!errors.identier}
+      />
+      <StyledTextField
+        type="number"
+        placeholder="Pozycja"
+        {...register('position', {
+          required: true,
+          minLength: 0,
+          maxLength: 100,
+        })}
+        error={!!errors.position}
+      />
+      <Button variant="contained" type="submit">
+        Add category
+      </Button>
     </Box>
   )
 }
